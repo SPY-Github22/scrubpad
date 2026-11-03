@@ -242,6 +242,22 @@ export function App() {
     navigator.clipboard.writeText(slackWrapped);
   };
 
+  const handleDownloadFile = () => {
+    if (!output) return;
+    const isJson = isCurrentOutputJson;
+    const filename = isJson ? 'sanitized-payload.json' : 'sanitized-payload.txt';
+    const mimeType = isJson ? 'application/json' : 'text/plain';
+    const blob = new Blob([output], { type: `${mimeType};charset=utf-8` });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   // Paste handler
   const handlePasteInput = async () => {
     try {
@@ -285,6 +301,7 @@ export function App() {
         onCopyRaw={handleCopyRaw}
         onCopyLlmPrompt={handleCopyLlmPrompt}
         onCopySlack={handleCopySlack}
+        onDownload={handleDownloadFile}
         isJson={isCurrentOutputJson}
         hasOutput={Boolean(output)}
         matchCount={matchCount}

@@ -10,7 +10,8 @@ import {
   Check,
   Save,
   MessageSquareCode,
-  Bot
+  Bot,
+  Download
 } from 'lucide-react';
 
 interface ActionToolbarProps {
@@ -25,6 +26,7 @@ interface ActionToolbarProps {
   onCopyRaw: () => void;
   onCopyLlmPrompt: () => void;
   onCopySlack: () => void;
+  onDownload: () => void;
   isJson: boolean;
   hasOutput: boolean;
   matchCount: number;
@@ -42,6 +44,7 @@ export const ActionToolbar: React.FC<ActionToolbarProps> = ({
   onCopyRaw,
   onCopyLlmPrompt,
   onCopySlack,
+  onDownload,
   isJson,
   hasOutput,
   matchCount,
@@ -179,13 +182,23 @@ export const ActionToolbar: React.FC<ActionToolbarProps> = ({
         </button>
 
         <button
+          onClick={onDownload}
+          disabled={!hasOutput}
+          className="flex items-center gap-1 bg-neutral-800 hover:bg-neutral-700 disabled:opacity-40 disabled:pointer-events-none text-neutral-100 font-medium px-2.5 py-1.5 rounded-md border border-neutral-700 transition"
+          title="Download sanitized file (.json or .txt)"
+        >
+          <Download className="w-3.5 h-3.5 text-blue-400" />
+          <span>Save</span>
+        </button>
+
+        <button
           onClick={onSaveToVault}
           disabled={!hasOutput}
           className="flex items-center gap-1 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 disabled:opacity-40 disabled:pointer-events-none font-medium px-2.5 py-1.5 rounded-md border border-emerald-800/50 transition"
           title="Save securely to AES-GCM Encrypted Local Vault"
         >
           <Save className="w-3.5 h-3.5" />
-          <span>Save Vault</span>
+          <span>Vault</span>
         </button>
       </div>
     </div>
