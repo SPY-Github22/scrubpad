@@ -1,7 +1,13 @@
 # ScrubPad 🛡️✨
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-emerald?style=for-the-badge&logo=github)](https://spy-github22.github.io/scrubpad/)
+[![CI & Deployment](https://github.com/SPY-Github22/scrubpad/actions/workflows/ci.yml/badge.svg)](https://github.com/SPY-Github22/scrubpad/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 > **The Zero-Leak Developer Scratchpad & Payload Sanitizer**  
 > *Recursive JSON un-mangler, zero-leak credential redactor, AES-GCM encrypted local vault, and semantic diff engine.*
+
+🌐 **Live Web App**: [https://spy-github22.github.io/scrubpad/](https://spy-github22.github.io/scrubpad/)
 
 ---
 
